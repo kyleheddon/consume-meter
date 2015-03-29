@@ -7,9 +7,7 @@
     </header>
     <section id="main" ng-show="items.length" ng-cloak>
         <ul id="item-list">
-            <li ng-repeat="item in items | filter:statusFilter track by $index"
-                ng-class="{completed: item.completed}"
-                ng-show="!item.hidden" hover="moom(item)">
+            <li ng-repeat="item in items | filter:statusFilter track by $index">
                 <a href="#/items/{{item._id}}">
                     <div class="view">
                         <label ng-dblclick="editItem(item)">{{item.title}}</label>

@@ -1,19 +1,40 @@
 <section id="item">
     <h1>{{item.title}}</h1>
+    <section id="usage">
+        <header>
+            <h1>Usage</h1>
+        </header>
+        <section class="add-usage">
+            <header>
+                <h1>Log Use</h1>
+            </header>
+            <form id="add_usage" ng-submit="createUsage(date, amount)">
+                <label>Used on (date)
+                    <input type="date" placeholder="2014-09-08" ng-model="date" required/>
+                </label>
+                <label>Amount (g)
+                    <input type="number" step="any" placeholder="0.25" ng-model="amount" required/>
+                </label>
+                <input type="submit" value="Add" />
+            </form>
+        </section>
 
-    <section class="add-usage">
-        <form id="add_usage" ng-submit="createUsage(date, amount)">
-            <label>Used on (date)
-                <input type="date" placeholder="2014-09-08" ng-model="date" required/>
-            </label>
-            <label>Amount (g)
-                <input type="number" step="any" placeholder="0.25" ng-model="amount" required/>
-            </label>
-            <input type="submit" value="Add" />
-        </form>
+        <section class="usages">
+            <header>
+                <h1>All Uses</h1>
+            </header>
+            <ul ng-show="usages.length" >
+                <li ng-repeat="usage in usages">
+                    <span>Date: </span>{{usage.date}}
+                    <br/>
+                    <span>Amount: </span>{{usage.amount}}
+                </li>
+            </ul>
+            <h1 ng-show="!usages.length">No uses logged</h1>
+        </section>
+
     </section>
-
     <button ng-click="delete(item)">Delete</button>
     <br/>
-    <a href="#/">Back</a>
+    <a href="/#/">Back</a>
 </section>

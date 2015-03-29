@@ -19,7 +19,7 @@ function getAll(req, res) {
 function create(req, res) {
     ItemUsage.create({
 		date : req.body.date,
-		amount: req.body.date,
+		amount: req.body.amount,
         item_id: req.params.item_id
 	}, function(err, usage) {
 		if (err)
