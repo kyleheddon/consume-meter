@@ -1,0 +1,21 @@
+<section>
+    <header id="header">
+        <h1>Items</h1>
+        <form id="item-form" ng-submit="addItem(itemTitle)">
+            <input id="new-item" placeholder="Item Title?" ng-model="itemTitle" autofocus>
+        </form>
+    </header>
+    <section id="main" ng-show="items.length" ng-cloak>
+        <ul id="item-list">
+            <li ng-repeat="item in items | filter:statusFilter track by $index"
+                ng-class="{completed: item.completed}"
+                ng-show="!item.hidden" hover="moom(item)">
+                <a href="#/items/{{item._id}}">
+                    <div class="view">
+                        <label ng-dblclick="editItem(item)">{{item.title}}</label>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </section>
+</section>

@@ -1,0 +1,19 @@
+<section id="item">
+    <h1>{{item.title}}</h1>
+
+    <section class="add-usage">
+        <form id="add_usage" ng-submit="createUsage(date, amount)">
+            <label>Used on (date)
+                <input type="date" placeholder="2014-09-08" ng-model="date" required/>
+            </label>
+            <label>Amount (g)
+                <input type="number" step="any" placeholder="0.25" ng-model="amount" required/>
+            </label>
+            <input type="submit" value="Add" />
+        </form>
+    </section>
+
+    <button ng-click="delete(item)">Delete</button>
+    <br/>
+    <a href="#/">Back</a>
+</section>
