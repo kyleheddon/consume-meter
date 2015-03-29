@@ -2,18 +2,30 @@
 <html ng-app="consumeMeter" lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>AngularJS • Games</title>
 		<style>[ng-cloak] { display: none; }</style>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
 		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bower_components/font-awesome/fonts/fontawesome-webfont.eot">
+		<link rel="stylesheet" href="bower_components/font-awesome/fonts/fontawesome-webfont.svg">
+		<link rel="stylesheet" href="bower_components/font-awesome/fonts/fontawesome-webfont.woff">
+		<link rel="stylesheet" href="bower_components/font-awesome/fonts/fontawesome-webfont.woff2">
+		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="bower_components/metrics-graphics/dist/metricsgraphics.css">
 		<script src="js/app.js"></script>
 		<script src="js/services/itemStorage.js"></script>
 		<script src="js/services/itemUsage.js"></script>
 		<script src="js/controllers/itemController.js"></script>
 		<script src="js/controllers/itemsController.js"></script>
+		<script src="js/directives/chart.js"></script>
 	</head>
 	<body>
-		<div ng-view></div>
+		<div class="container" ng-view></div>
+		<script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+		<script src="bower_components/d3/d3.min.js" charset="utf-8"></script>
+		<script src="bower_components/metrics-graphics/dist/metricsgraphics.js" charset="utf-8"></script>
 	</body>
 </html>

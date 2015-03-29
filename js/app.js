@@ -1,7 +1,8 @@
 var app = angular.module('consumeMeter', [
     'ngRoute',
     'appControllers',
-    'appServices'
+    'appServices',
+    'appDirectives'
 ]);
 
 app.config(['$routeProvider',
@@ -22,3 +23,4 @@ app.config(['$routeProvider',
 
 angular.module('appControllers', []);
 angular.module('appServices', []);
+angular.module('appDirectives', []);

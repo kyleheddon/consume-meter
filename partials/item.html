@@ -1,40 +1,58 @@
+<a href="/#/"><- All Items</a>
+
 <section id="item">
-    <h1>{{item.title}}</h1>
+    <h1>{{item.title}} <small>Usage</small></h1>
     <section id="usage">
         <header>
-            <h1>Usage</h1>
+
         </header>
         <section class="add-usage">
             <header>
-                <h1>Log Use</h1>
+                <h3>Log Use</h3>
             </header>
-            <form id="add_usage" ng-submit="createUsage(date, amount)">
+            <form id="add_usage" class="form-group" ng-submit="createUsage(date, amount)">
                 <label>Used on (date)
-                    <input type="date" placeholder="2014-09-08" ng-model="date" required/>
+                    <input type="date" class="form-control" placeholder="2014-09-08" ng-model="date" required/>
                 </label>
                 <label>Amount (g)
-                    <input type="number" step="any" placeholder="0.25" ng-model="amount" required/>
+                    <input type="number" class="form-control" step="any" placeholder="0.25" ng-model="amount" required/>
                 </label>
-                <input type="submit" value="Add" />
+                <input type="submit" value="Log" class="btn btn-primary"/>
             </form>
         </section>
 
         <section class="usages">
             <header>
-                <h1>All Uses</h1>
+                <h3>All Uses
+                    <small>
+                        <i  class="fa fa-pencil-square-o"
+                            ng-click="showUsageEdit = !showUsageEdit"
+                            ng-init="showUsageEdit=false"
+                            ng-show="!showUsageEdit">
+                        </i>
+                        <i  class="fa fa-times"
+                            ng-click="showUsageEdit = !showUsageEdit"
+                            ng-show="showUsageEdit">
+                        </i>
+                    </small>
+                </h3>
             </header>
-            <ul ng-show="usages.length" >
-                <li ng-repeat="usage in usages">
-                    <span>Date: </span>{{usage.date}}
-                    <br/>
-                    <span>Amount: </span>{{usage.amount}}
-                </li>
-            </ul>
+            <div chart ng-show="usages.length && !showUsageEdit"></div>
+            <div ng-show="showUsageEdit">
+                <table class="table">
+                    <tr ng-repeat="use in usages">
+                        <td>{{use.date}}</td>
+                        <td>{{use.amount}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" ng-click="deleteUsage(use)">Delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <h1 ng-show="!usages.length">No uses logged</h1>
         </section>
 
     </section>
-    <button ng-click="delete(item)">Delete</button>
+    <button class="btn btn-danger" ng-click="delete(item)">Delete {{item.title}}</button>
     <br/>
-    <a href="/#/">Back</a>
 </section>

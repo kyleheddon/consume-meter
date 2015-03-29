@@ -5,12 +5,12 @@ angular.module('appControllers')
 
         $itemStorage.get({ id: $routeParams.itemId }).success(function(item) {
             $scope.item = item;
-            console.log(item);
+            $scope.$emit('item', item);
         });
 
-        $itemUsage.get($routeParams.itemId).success(function(usages){
-            $scope.usages = usages;
-            console.log(usages);
+        $itemUsage.get($routeParams.itemId).success(function(usage){
+            $scope.usages = usage;
+            $scope.$emit('usage', usage);
         });
 
         $scope.delete = function(item){
@@ -29,6 +29,14 @@ angular.module('appControllers')
             $itemUsage.create(itemId, usage).success(function(usage){
                 console.log(usage);
                 $scope.usages.push(usage);
+                $scope.$emit('usage', $scope.usages);
             });
+        }
+
+        $scope.deleteUsage = function(use){
+            $itemUsage.delete(use).success(function(usage){
+                $scope.usages = usage;
+                $scope.$emit('usage', usage);
+            })
         }
     }])

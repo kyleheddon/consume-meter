@@ -9,44 +9,44 @@ function decorate(app){
 
 function getAll(req, res) {
     ItemUsage.find({ item_id: req.params.item_id }, function(err, uses) {
-		if (err)
-			res.send(err)
+        if (err)
+        res.send(err)
 
-		res.json(uses);
-	});
+        res.json(uses);
+    });
 }
 
 function create(req, res) {
     ItemUsage.create({
-		date : req.body.date,
-		amount: req.body.amount,
+        date : req.body.date,
+        amount: req.body.amount,
         item_id: req.params.item_id
-	}, function(err, usage) {
-		if (err)
-			return res.send(err);
+    }, function(err, usage) {
+        if (err)
+        return res.send(err);
 
-		res.json(usage);
-	});
+        res.json(usage);
+    });
 }
 
 function update(req, res) {
     ItemUsage.findById(req.params.id, function(err, usage){
-		if(err){
-			return res.send(err);
-		}
-		res.json(usage);
-	});
+        if(err){
+            return res.send(err);
+        }
+        res.json(usage);
+    });
 }
 
 function deleteUsage(req, res) {
     ItemUsage.remove({
-		_id : req.params.id
-	}, function(err, todo) {
-		if (err)
-			res.send(err);
+        _id : req.params.id
+    }, function(err, todo) {
+        if (err)
+        res.send(err);
 
-		res.json({success: true});
-	});
+        getAll(req, res);
+    });
 }
 
 module.exports = {

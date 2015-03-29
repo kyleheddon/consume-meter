@@ -11,16 +11,16 @@ angular.module('appServices')
             return $http.get(itemPath(itemId));
         },
 
-        delete: function(itemId) {
-            return $http.delete(itemPath(itemId));
+        delete: function(use) {
+            return $http.delete(itemPath(use.item_id) + '/' + use._id);
         },
 
-        create: function(itemId, usage) {
-            return $http.post(itemPath(itemId), usage);
+        create: function(itemId, use) {
+            return $http.post(itemPath(itemId), use);
         },
 
-        put: function(itemId, usage) {
-            return $http.put(itemPath(itemId), usage);
+        put: function(use) {
+            return $http.put(itemPath(use.item_id), use);
         }
     };
 }]);
