@@ -16,12 +16,20 @@ angular.module('appDirectives')
             });
 
             function formatData(){
-                var data = usage.map(function(use){
-                    return {
-                        date: new Date(use.date),
-                        amount: use.amount
-                    }
-                });
+                var data = usage.sort(function(a,b){
+                        return new Date(a.date) - new Date(b.date);
+                    })
+                    .map(function(use){
+                        var d = new Date(use.date);
+                        var day = d.getDate();
+                        var month = d.getMonth();
+                        var year = d.getFullYear();
+
+                        return {
+                            date: month+1 + '/' + day + '/' + year,
+                            amount: use.amount
+                        }
+                    });
 
                 return data;
             }
@@ -35,13 +43,17 @@ angular.module('appDirectives')
                 elem.attr('id', elementId);
 
                 var data = formatData();
+                var width = $('#' + elementId).parent().innerWidth();
 
                 MG.data_graphic({
                     title: item.title + ' Use',
                     description: "This graphic shows a time-series of " + item.title + " used.",
                     data: data,
-                    width: window.innerWidth * 0.9,
-                    height: window.innerWidth * 0.4,
+                    width: width,
+                    height: width * 0.4,
+                    interpolate: 'linear',
+                    chart_type: 'bar',
+                    bar_orientation: 'vertical',
                     target: '#' + elementId,
                     x_accessor: 'date',
                     y_accessor: 'amount',

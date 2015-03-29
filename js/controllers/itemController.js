@@ -27,7 +27,6 @@ angular.module('appControllers')
             }
 
             $itemUsage.create(itemId, usage).success(function(usage){
-                console.log(usage);
                 $scope.usages.push(usage);
                 $scope.$emit('usage', $scope.usages);
             });
@@ -37,6 +36,7 @@ angular.module('appControllers')
             $itemUsage.delete(use).success(function(usage){
                 $scope.usages = usage;
                 $scope.$emit('usage', usage);
-            })
+            });
         }
+
     }])
